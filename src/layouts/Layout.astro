@@ -45,6 +45,295 @@ import "../styles/global.css";
 		<title>Desarrollador de Software - Portfolio</title>
 	</head>
 	<body class="min-h-screen bg-background text-foreground antialiased">
+		<!-- Overlay de ruido estático -->
+		<div class="noise-overlay"></div>
+
+		<!-- Partículas flotantes -->
+		<div id="particles-container"></div>
+
 		<slot />
 	</body>
 </html>
+
+<script>
+	// Efectos globales dramáticos
+	if (typeof window !== "undefined") {
+		document.addEventListener("DOMContentLoaded", () => {
+			// Crear partículas flotantes dramáticas
+			createDramaticParticles();
+
+			// Efecto de distorsión global ocasional
+			createGlobalDistortion();
+
+			// Efecto de cursor personalizado
+			createCustomCursor();
+		});
+
+		function createDramaticParticles() {
+			const container = document.getElementById("particles-container");
+			if (!container) return;
+
+			// Crear múltiples tipos de partículas
+			for (let i = 0; i < 30; i++) {
+				const particle = document.createElement("div");
+				particle.className = "floating-particle";
+
+				// Tipos de partículas aleatorias
+				const types = ["circle", "square", "triangle", "line"];
+				const type = types[Math.floor(Math.random() * types.length)];
+				particle.classList.add(`particle-${type}`);
+
+				// Posición aleatoria
+				particle.style.left = Math.random() * 100 + "%";
+				particle.style.top = Math.random() * 100 + "%";
+
+				// Animación aleatoria
+				const duration = 3 + Math.random() * 4; // 3-7 segundos
+				const delay = Math.random() * 2;
+				particle.style.animation = `float-dramatic ${duration}s ease-in-out infinite`;
+				particle.style.animationDelay = delay + "s";
+
+				// Tamaño aleatorio
+				const size = 2 + Math.random() * 6; // 2-8px
+				particle.style.width = size + "px";
+				particle.style.height = size + "px";
+
+				container.appendChild(particle);
+			}
+		}
+
+		function createGlobalDistortion() {
+			// Efecto de distorsión global ocasional
+			setInterval(() => {
+				if (Math.random() < 0.02) {
+					// 2% de probabilidad cada 2 segundos
+					document.body.classList.add("global-distortion");
+					setTimeout(() => {
+						document.body.classList.remove("global-distortion");
+					}, 200);
+				}
+			}, 2000);
+		}
+
+		function createCustomCursor() {
+			const cursor = document.createElement("div");
+			cursor.className = "custom-cursor";
+			cursor.style.position = "fixed";
+			cursor.style.width = "20px";
+			cursor.style.height = "20px";
+			cursor.style.background =
+				"radial-gradient(circle, #ff0000, transparent)";
+			cursor.style.borderRadius = "50%";
+			cursor.style.pointerEvents = "none";
+			cursor.style.zIndex = "9999";
+			cursor.style.transition = "transform 0.1s ease";
+			cursor.style.boxShadow = "0 0 15px #ff0000";
+			cursor.style.display = "block";
+			cursor.style.left = "0px";
+			cursor.style.top = "0px";
+			document.body.appendChild(cursor);
+			console.log("Cursor personalizado creado:", cursor);
+
+			document.addEventListener("mousemove", (e) => {
+				cursor.style.left = e.clientX - 10 + "px";
+				cursor.style.top = e.clientY - 10 + "px";
+			});
+
+			document.addEventListener("mousedown", () => {
+				cursor.classList.add("cursor-active");
+			});
+
+			document.addEventListener("mouseup", () => {
+				cursor.classList.remove("cursor-active");
+			});
+
+			// Ocultar cursor en elementos interactivos
+			const interactiveElements = document.querySelectorAll(
+				'a, button, input, textarea, [role="button"]',
+			);
+			interactiveElements.forEach((el) => {
+				el.addEventListener("mouseenter", () => {
+					cursor.style.display = "none";
+				});
+
+				el.addEventListener("mouseleave", () => {
+					cursor.style.display = "block";
+				});
+			});
+		}
+	}
+</script>
+
+<style>
+	/* Overlay de ruido estático */
+	.noise-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.15"/%3E%3C/svg%3E');
+		pointer-events: none;
+		z-index: 1;
+		animation: noise-flicker 0.1s ease-in-out infinite;
+	}
+
+	@keyframes noise-flicker {
+		0%,
+		100% {
+			opacity: 0.15;
+		}
+		50% {
+			opacity: 0.25;
+		}
+	}
+
+	/* Líneas de escaneo */
+	.scan-line {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 3px;
+		background: linear-gradient(90deg, transparent, #ff0000, transparent);
+		animation: scan 3s linear infinite;
+		z-index: 10;
+		pointer-events: none;
+		box-shadow: 0 0 10px #ff0000;
+	}
+
+	@keyframes scan {
+		0% {
+			transform: translateY(-100vh);
+		}
+		100% {
+			transform: translateY(100vh);
+		}
+	}
+
+	/* Partículas flotantes dramáticas */
+	#particles-container {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 2;
+	}
+
+	.floating-particle {
+		position: absolute;
+		pointer-events: none;
+	}
+
+	.particle-circle {
+		background: radial-gradient(circle, #ff0000, transparent);
+		border-radius: 50%;
+		box-shadow: 0 0 10px #ff0000;
+	}
+
+	.particle-square {
+		background: linear-gradient(45deg, #ff0000, #ff6666);
+		transform: rotate(45deg);
+		box-shadow: 0 0 8px #ff0000;
+	}
+
+	.particle-triangle {
+		width: 0;
+		height: 0;
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-bottom: 10px solid #ff0000;
+		background: none;
+		box-shadow: 0 0 8px #ff0000;
+	}
+
+	.particle-line {
+		background: linear-gradient(90deg, transparent, #ff0000, transparent);
+		height: 1px;
+		box-shadow: 0 0 5px #ff0000;
+	}
+
+	@keyframes float-dramatic {
+		0%,
+		100% {
+			transform: translateY(0px) rotate(0deg) scale(1);
+			opacity: 0.3;
+		}
+		25% {
+			transform: translateY(-30px) rotate(90deg) scale(1.2);
+			opacity: 0.8;
+		}
+		50% {
+			transform: translateY(-60px) rotate(180deg) scale(0.8);
+			opacity: 1;
+		}
+		75% {
+			transform: translateY(-30px) rotate(270deg) scale(1.1);
+			opacity: 0.6;
+		}
+	}
+
+	/* Distorsión global */
+	.global-distortion {
+		animation: global-distortion 0.2s ease-in-out;
+	}
+
+	@keyframes global-distortion {
+		0% {
+			transform: translate(0) scale(1);
+			filter: hue-rotate(0deg) contrast(1) brightness(1);
+		}
+		25% {
+			transform: translate(-1px, 1px) scale(1.005);
+			filter: hue-rotate(90deg) contrast(1.3) brightness(1.1);
+		}
+		50% {
+			transform: translate(1px, -1px) scale(0.995);
+			filter: hue-rotate(180deg) contrast(1.5) brightness(0.9);
+		}
+		75% {
+			transform: translate(-1px, -1px) scale(1.005);
+			filter: hue-rotate(270deg) contrast(1.2) brightness(1.05);
+		}
+		100% {
+			transform: translate(0) scale(1);
+			filter: hue-rotate(360deg) contrast(1) brightness(1);
+		}
+	}
+
+	/* Cursor personalizado */
+	.custom-cursor {
+		position: fixed;
+		width: 20px;
+		height: 20px;
+		background: radial-gradient(circle, #ff0000, transparent);
+		border-radius: 50%;
+		pointer-events: none;
+		z-index: 9999;
+		transition: transform 0.1s ease;
+		box-shadow: 0 0 15px #ff0000;
+		display: block !important;
+		opacity: 1;
+	}
+
+	.cursor-active {
+		transform: scale(0.8);
+		background: radial-gradient(circle, #ff6666, transparent);
+	}
+
+	/* Ocultar cursor por defecto */
+	* {
+		cursor: none;
+	}
+
+	/* Restaurar cursor para elementos interactivos */
+	a,
+	button,
+	input,
+	textarea,
+	[role="button"] {
+		cursor: auto;
+	}
+</style>

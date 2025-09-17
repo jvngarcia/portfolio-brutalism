@@ -1,27 +1,38 @@
 ---
+import CircuitBackground from "./CircuitBackground.tsx";
 // Hero Section
 ---
 
-<section class="relative py-20 sm:py-32 lg:py-40">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<section class="relative py-20 sm:py-32 lg:py-40 overflow-hidden">
+  <!-- Fondo de circuito -->
+  <CircuitBackground client:load />
+
+  <!-- Overlay sutil para mejorar legibilidad -->
+  <div class="absolute inset-0 bg-background/80 dark:bg-background/90 z-5">
+  </div>
+
+  <!-- Contenido del hero -->
+  <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto text-center">
-      <!-- Título principal -->
+      <!-- Título principal con efecto glitch -->
       <h1
-        class="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"
+        class="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight drop-shadow-lg glitch-title"
+        data-text="Desarrollador de Software"
       >
         Desarrollador de Software
       </h1>
 
-      <!-- Subtítulo -->
+      <!-- Subtítulo con efecto glitch -->
       <h2
-        class="text-xl sm:text-2xl lg:text-3xl font-medium text-muted-foreground mb-8 leading-relaxed"
+        class="text-xl sm:text-2xl lg:text-3xl font-medium text-muted-foreground mb-8 leading-relaxed drop-shadow-md glitch-subtitle"
+        data-text="Creador de extensiones y productos digitales"
       >
         Creador de extensiones y productos digitales
       </h2>
 
       <!-- Descripción -->
       <p
-        class="text-lg sm:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed"
+        class="text-lg sm:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-md"
       >
         Me apasiona crear productos digitales que resuelven problemas reales.
         Especializado en desarrollo de extensiones para navegadores y
@@ -66,3 +77,182 @@
     </div>
   </div>
 </section>
+
+<script>
+  // Efectos de glitch para el Hero
+  if (typeof window !== "undefined") {
+    document.addEventListener("DOMContentLoaded", () => {
+      // Efecto de glitch en el título principal
+      const title = document.querySelector(".glitch-title");
+      if (title) {
+        setInterval(() => {
+          if (Math.random() < 0.15) {
+            // 15% de probabilidad cada 2 segundos
+            title.classList.add("glitch-active");
+            setTimeout(() => {
+              title.classList.remove("glitch-active");
+            }, 200);
+          }
+        }, 2000);
+      }
+
+      // Efecto de glitch en el subtítulo
+      const subtitle = document.querySelector(".glitch-subtitle");
+      if (subtitle) {
+        setInterval(() => {
+          if (Math.random() < 0.1) {
+            // 10% de probabilidad cada 3 segundos
+            subtitle.classList.add("glitch-active");
+            setTimeout(() => {
+              subtitle.classList.remove("glitch-active");
+            }, 150);
+          }
+        }, 3000);
+      }
+
+      // Efecto de distorsión ocasional en toda la sección
+      const heroSection = document.querySelector("section");
+      if (heroSection) {
+        setInterval(() => {
+          if (Math.random() < 0.05) {
+            // 5% de probabilidad cada 4 segundos
+            heroSection.classList.add("distortion-active");
+            setTimeout(() => {
+              heroSection.classList.remove("distortion-active");
+            }, 300);
+          }
+        }, 4000);
+      }
+    });
+  }
+</script>
+
+<style>
+  /* Efectos de glitch dramáticos */
+  .glitch-title,
+  .glitch-subtitle {
+    position: relative;
+    display: inline-block;
+  }
+
+  .glitch-title::before,
+  .glitch-title::after,
+  .glitch-subtitle::before,
+  .glitch-subtitle::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .glitch-title::before,
+  .glitch-subtitle::before {
+    color: #ff0000;
+    z-index: -1;
+    animation: glitch-1 0.2s ease-in-out infinite alternate;
+  }
+
+  .glitch-title::after,
+  .glitch-subtitle::after {
+    color: #00ff00;
+    z-index: -2;
+    animation: glitch-2 0.2s ease-in-out infinite alternate-reverse;
+  }
+
+  .glitch-active.glitch-title::before,
+  .glitch-active.glitch-title::after,
+  .glitch-active.glitch-subtitle::before,
+  .glitch-active.glitch-subtitle::after {
+    opacity: 1;
+  }
+
+  @keyframes glitch-1 {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-3px, 3px);
+    }
+    40% {
+      transform: translate(-3px, -3px);
+    }
+    60% {
+      transform: translate(3px, 3px);
+    }
+    80% {
+      transform: translate(3px, -3px);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+
+  @keyframes glitch-2 {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(3px, -3px);
+    }
+    40% {
+      transform: translate(3px, 3px);
+    }
+    60% {
+      transform: translate(-3px, -3px);
+    }
+    80% {
+      transform: translate(-3px, 3px);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+
+  /* Efecto de distorsión en toda la sección */
+  .distortion-active {
+    animation: distortion 0.3s ease-in-out;
+  }
+
+  @keyframes distortion {
+    0% {
+      transform: translate(0) scale(1);
+      filter: hue-rotate(0deg) contrast(1);
+    }
+    25% {
+      transform: translate(-2px, 1px) scale(1.01);
+      filter: hue-rotate(90deg) contrast(1.2);
+    }
+    50% {
+      transform: translate(2px, -1px) scale(0.99);
+      filter: hue-rotate(180deg) contrast(1.5);
+    }
+    75% {
+      transform: translate(-1px, 2px) scale(1.01);
+      filter: hue-rotate(270deg) contrast(1.2);
+    }
+    100% {
+      transform: translate(0) scale(1);
+      filter: hue-rotate(360deg) contrast(1);
+    }
+  }
+
+  /* Efecto de parpadeo ocasional */
+  .glitch-title,
+  .glitch-subtitle {
+    animation: subtle-flicker 0.1s ease-in-out infinite;
+  }
+
+  @keyframes subtle-flicker {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.98;
+    }
+  }
+</style>
