@@ -3,24 +3,48 @@ import "../styles/global.css";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta
+			name="description"
+			content="Desarrollador de software especializado en crear extensiones y productos digitales. Explora mis proyectos y conoce mi trabajo."
+		/>
+		<meta
+			name="keywords"
+			content="desarrollador, software, extensiones, chrome, vscode, proyectos, portfolio"
+		/>
+		<meta name="author" content="Desarrollador de Software" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta
+			property="og:title"
+			content="Desarrollador de Software - Portfolio"
+		/>
+		<meta
+			property="og:description"
+			content="Desarrollador de software especializado en crear extensiones y productos digitales."
+		/>
+		<meta property="og:url" content="https://portfolio-ejemplo.com" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta
+			property="twitter:title"
+			content="Desarrollador de Software - Portfolio"
+		/>
+		<meta
+			property="twitter:description"
+			content="Desarrollador de software especializado en crear extensiones y productos digitales."
+		/>
+
+		<title>Desarrollador de Software - Portfolio</title>
 	</head>
-	<body>
+	<body class="min-h-screen bg-background text-foreground antialiased">
 		<slot />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

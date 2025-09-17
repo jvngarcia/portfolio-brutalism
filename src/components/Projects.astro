@@ -1,0 +1,83 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+
+// Datos de proyectos de ejemplo
+const projects = [
+  {
+    title: "Extensión para Chrome: Gestor de Tareas",
+    description:
+      "Una extensión de productividad que permite gestionar tareas directamente desde el navegador con sincronización en tiempo real.",
+    technologies: ["JavaScript", "Chrome APIs", "HTML", "CSS"],
+    githubUrl: "https://github.com/usuario/task-manager-extension",
+    liveUrl: "https://chrome.google.com/webstore/detail/task-manager",
+    storeUrl: "https://chrome.google.com/webstore/detail/task-manager",
+    storeIcon: "/chrome-icon.svg",
+  },
+  {
+    title: "Extensión para VS Code: Code Formatter Pro",
+    description:
+      "Herramienta de formateo de código que soporta múltiples lenguajes y se integra perfectamente con el flujo de trabajo de desarrollo.",
+    technologies: ["TypeScript", "VS Code APIs", "Node.js"],
+    githubUrl: "",
+    liveUrl:
+      "https://marketplace.visualstudio.com/items?itemName=usuario.code-formatter-pro",
+    storeUrl: "",
+    storeIcon: "/vscode-icon.svg",
+  },
+  {
+    title: "Aplicación Web: Dashboard de Analytics",
+    description:
+      "Dashboard moderno para visualizar métricas y analytics con gráficos interactivos y exportación de datos.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js"],
+    githubUrl: "https://github.com/usuario/analytics-dashboard",
+    liveUrl: "https://analytics-dashboard-demo.vercel.app",
+  },
+];
+---
+
+<section id="proyectos" class="py-20 sm:py-32">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Título de la sección -->
+    <div class="text-center mb-16">
+      <h2
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4"
+      >
+        Proyectos Destacados
+      </h2>
+      <p class="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+        Una selección de mis proyectos personales más recientes, enfocados en
+        crear herramientas útiles y experiencias digitales excepcionales.
+      </p>
+    </div>
+
+    <!-- Grid de proyectos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {projects.map((project) => <ProjectCard {...project} />)}
+    </div>
+
+    <!-- CTA adicional -->
+    <div class="text-center mt-16">
+      <p class="text-muted-foreground mb-6">
+        ¿Interesado en colaborar o tienes alguna pregunta?
+      </p>
+      <a
+        href="#contacto"
+        class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-primary-foreground bg-primary rounded-lg hover:bg-primary/90 transition-colors duration-200"
+      >
+        Ponte en contacto
+        <svg
+          class="ml-2 w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
