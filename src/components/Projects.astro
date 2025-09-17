@@ -4,33 +4,33 @@ import ProjectCard from "./ProjectCard.astro";
 // Datos de proyectos de ejemplo
 const projects = [
   {
-    title: "Extensión para Chrome: Gestor de Tareas",
+    title:
+      "Extensión para VSCode: Generador de arquitectura visual (EN DESARROLLO)",
     description:
-      "Una extensión de productividad que permite gestionar tareas directamente desde el navegador con sincronización en tiempo real.",
+      "Genera la arquitectura del proyecto y genera el código de manera inmediata.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Reactflow"],
+    githubUrl: "https://github.com/jvngarcia/code-generator",
+  },
+  {
+    title: "Extensión para Chrome: Meet Volume Control",
+    description:
+      "Ajusta fácilmente el volumen de tus reuniones de Google Meet con un sencillo control deslizante.",
     technologies: ["JavaScript", "Chrome APIs", "HTML", "CSS"],
-    githubUrl: "https://github.com/usuario/task-manager-extension",
-    liveUrl: "https://chrome.google.com/webstore/detail/task-manager",
-    storeUrl: "https://chrome.google.com/webstore/detail/task-manager",
+    githubUrl: "",
+    liveUrl:
+      "https://chromewebstore.google.com/detail/meet-volume-control/oapkljojklpifklghflpjbgladpicdfl?authuser=1&hl=es",
     storeIcon: "/chrome-icon.svg",
   },
   {
-    title: "Extensión para VS Code: Code Formatter Pro",
+    title: "Extensión para Chrome: Screenify",
     description:
-      "Herramienta de formateo de código que soporta múltiples lenguajes y se integra perfectamente con el flujo de trabajo de desarrollo.",
-    technologies: ["TypeScript", "VS Code APIs", "Node.js"],
+      "Captura de pantalla inteligente y segura. Desenfoca info. sensible antes de capturar. ¡Privacidad instantánea!",
+    technologies: ["TypeScript", "Node.js", "Chrome APIs"],
     githubUrl: "",
     liveUrl:
-      "https://marketplace.visualstudio.com/items?itemName=usuario.code-formatter-pro",
+      "https://chromewebstore.google.com/detail/screenify/emgimchlkegdnbognlgaollhbhepodcf?authuser=1&hl=es",
     storeUrl: "",
     storeIcon: "/vscode-icon.svg",
-  },
-  {
-    title: "Aplicación Web: Dashboard de Analytics",
-    description:
-      "Dashboard moderno para visualizar métricas y analytics con gráficos interactivos y exportación de datos.",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js"],
-    githubUrl: "https://github.com/usuario/analytics-dashboard",
-    liveUrl: "https://analytics-dashboard-demo.vercel.app",
   },
 ];
 ---
@@ -61,7 +61,7 @@ const projects = [
         ¿Interesado en colaborar o tienes alguna pregunta?
       </p>
       <a
-        href="#contacto"
+        href="mailto:angelgarciaweb@gmail.com"
         class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-primary-foreground bg-primary rounded-lg hover:bg-primary/90 transition-colors duration-200"
       >
         Ponte en contacto

@@ -1,26 +1,41 @@
 ---
-import ThemeToggle from './ThemeToggle.tsx';
+import ThemeToggle from "./ThemeToggle.tsx";
 ---
 
-<header class="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+<header
+  class="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+>
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       <!-- Logo/Nombre -->
       <div class="flex items-center">
-        <a href="/" class="text-xl font-semibold text-foreground hover:text-primary transition-colors duration-200">
-          Desarrollador
+        <a
+          href="/"
+          class="text-xl font-semibold text-foreground hover:text-primary transition-colors duration-200"
+        >
+          Angel García
         </a>
       </div>
 
       <!-- Navegación -->
       <nav class="hidden md:flex items-center space-x-8">
-        <a href="#proyectos" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+        <a
+          href="#proyectos"
+          class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+        >
           Proyectos
         </a>
-        <a href="#sobre-mi" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+        <a
+          href="https://github.com/jvngarcia"
+          target="_blank"
+          class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+        >
           Sobre mí
         </a>
-        <a href="#contacto" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+        <a
+          href="mailto:angelgarciaweb@gmail.com"
+          class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+        >
           Contacto
         </a>
       </nav>
